@@ -1,8 +1,24 @@
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import ChatRoom from "./pages/ChatRoom";
+import { Route, Routes } from "react-router-dom";
+import { PrivateRoute } from "./routes/PrivateRoute";
+
 function App() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <button className="btn btn-accent">Button</button>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route
+          path="/chat"
+          element={
+            <PrivateRoute>
+              <ChatRoom />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
     </div>
   );
 }
